@@ -1,0 +1,51 @@
+.saludo{
+    width: 100%; 
+    background-color: rgb(68, 68, 68);             
+    
+    &__bienvenida{
+        text-align: center;
+        color: #f3f3f3;
+        padding: 0.5rem 0;
+    }
+}
+.header{
+    width: 100%;       
+    @include flexible(flex, row, nowrap, space-between, center);   
+    padding: 1rem 0;
+    background-color: #ffffff;
+    border-bottom: #010101 2px solid;  
+
+    &__logo {
+        font-family: 'Dancing Script', cursive;
+        font-size: 3rem;
+        font-weight: 700;
+        cursor: pointer;
+      
+    }
+    &__productos {
+        @include flexible(flex, row, nowrap, space-around, center);      
+        margin-left: 2rem;  
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;             
+    }
+    
+    &__usuario {
+        @include flexible(flex, row, nowrap, space-around, center);        
+        margin-right: 2rem; 
+        font-size: 1rem;
+        font-weight: 600;        
+    }
+}
+
+.productos {
+    &__item {
+        padding: 0.5rem 2rem;
+    }
+}
+
+.usuario {
+    &__item {
+        padding: 0.5rem 2rem;
+    }
+}

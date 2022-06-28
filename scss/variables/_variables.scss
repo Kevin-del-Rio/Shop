@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+@mixin flexible($dis, $direction, $corte, $justify, $aling) {
+    display: $dis;
+    flex-flow: $direction $corte;
+    justify-content: $justify;
+    align-items: $aling;
+}
