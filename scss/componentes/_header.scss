@@ -1,7 +1,9 @@
 .saludo{
+    z-index: 1;
     width: 100%; 
     background-color: rgb(68, 68, 68);             
-    
+    position: fixed;
+    top: 0;
     &__bienvenida{
         text-align: center;
         color: #f3f3f3;
@@ -9,8 +11,11 @@
     }
 }
 .header{
-    width: 100%;       
-    @include flexible(flex, row, nowrap, space-between, center);   
+    z-index: 1;
+    width: 100%;      
+    position: fixed; 
+    top: 2.3rem;
+    @include flexible(flex, row, nowrap, space-around, center);   
     padding: 1rem 0;
     background-color: #ffffff;
     border-bottom: #010101 2px solid;  
@@ -35,17 +40,5 @@
         margin-right: 2rem; 
         font-size: 1rem;
         font-weight: 600;        
-    }
-}
-
-.productos {
-    &__item {
-        padding: 0.5rem 2rem;
-    }
-}
-
-.usuario {
-    &__item {
-        padding: 0.5rem 2rem;
     }
 }
