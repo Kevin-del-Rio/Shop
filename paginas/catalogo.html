@@ -4,10 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/8b41b42900.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <!-- fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- box icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="https://kit.fontawesome.com/8b41b42900.js" crossorigin="anonymous"></script> 
+    <!--css  -->
     <link rel="stylesheet" href="/css/main.css">
+    <!-- js -->
     <script src="/javaScript/main.js"></script>
     <title>Catálogo | Shop</title>
 </head>
@@ -17,12 +23,12 @@
         <h3 class="saludo__bienvenida">Bienvenidos a nuestro Shop</h3>
     </div>
     <header class="header">
-        <ul class="header__productos productos">
-            <li class="productos__item"><a href="#">Categorias</a></li>
+        <ul class="header__nav nav">
+            <li class="nav__item"><a href="#">Categorias</a></li>
             <!-- <li class="productos__item"><a href="./paginas/catalogo.html">Ofertas</a></li> -->
             <!-- <li class="productos__item"><a href="#"><img src="../img/iconos/search.svg" alt="icono buscador"></a></li> -->
         </ul>
-        <div class="header__logo"><a href="#">SHOP</a></div>
+        <h1 class="header__logo"><a class="logo__titulo" href="../index.html">SHOP</a></h1>
         <ul class="header__usuario usuario">
             <!-- <li class="usuario__item"><a href="#">Registrarse</a></li> -->
             <!-- <li class="usuario__item"><a href="#"><img src="../img/iconos/user-circle.svg" alt="icono login"></a></li> -->
@@ -30,72 +36,106 @@
                         alt="icono carrito de compras"></a></li>
         </ul>
     </header>
-    <h1>Ofertas</h1>
-    <section class="ofertas">
-        
-        <div class="ofertas__card card">
-            <img class="card__img" src="../img/catalogo/61sKuPvcllL._AC_UY395_.jpg" alt="foto articulo">
-            <div class="card__info info">
-                <h3 class="info__titulo">Articulo 1</h3>
-                <p class="info__descripcion">color, talle, sexo</p>
-                <p class="info__precio">$400</p>
-                <button class="info__agregar">Agregar aL carrito</button>
+<!-- productos -->
+<section class="productos">
+    <div class="productos__center">
+        <div class="producto">
+            <div class="imge__container">
+                <img src="../img/catalogo/png-transparent-watch-strap-chronograph-armani-watch-brown-watch-accessory-bracelet-removebg-preview.png"
+                    alt="imagen producto">
+            </div>
+            <div class="peoducto__footer">
+                <h1>Relojes Originales</h1>
+                <div class="rating">
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bx-star"></span>
+                </div>
+                <div class="price">$102.00</div>
+            </div>
+            <div class="bottom">
+                <div class="btn__group">
+                    <a href="#" class="btn">Añadir carrito</a>
+                    <a href="./vistaProducto.html" class="btn view">Vista</a>
+                </div>
             </div>
         </div>
-        <div class="ofertas__card card">
-            <img class="card__img" src="../img/catalogo/GrisN_1000x1000.progressive.webp" alt="foto articulo">
-            <div class="card__info info">
-                <h3 class="info__titulo">Articulo 2</h3>
-                <p class="info__descripcion">color, talle, sexo</p>
-                <p class="info__precio">$600</p>
-                <button class="info__agregar">Agregar aL carrito</button>
+        <div class="producto">
+            <div class="imge__container">
+                <img src="../img/catalogo/png-transparent-watch-strap-chronograph-armani-watch-brown-watch-accessory-bracelet-removebg-preview.png"
+                    alt="imagen producto">
             </div>
-        </div>    <div class="ofertas__card card">
-            <img class="card__img" src="../img/catalogo/McysHandbags202103_00.jpg" alt="foto articulo">
-            <div class="card__info info">
-                <h3 class="info__titulo">Articulo 3</h3>
-                <p class="info__descripcion">color, talle, sexo</p>
-                <p class="info__precio">$450</p>
-                <button class="info__agregar">Agregar aL carrito</button>
+            <div class="peoducto__footer">
+                <h1>Relojes Originales</h1>
+                <div class="rating">
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bx-star"></span>
+
+                </div>
+                <div class="price">$102.00</div>
             </div>
-        </div>
-        <div class="ofertas__card card">
-            <img class="card__img" src="../img/catalogo/GrisN_1000x1000.progressive.webp" alt="foto articulo">
-            <div class="card__info info">
-                <h3 class="info__titulo">Articulo 4</h3>
-                <p class="info__descripcion">color, talle, sexo</p>
-                <p class="info__precio">$250</p>
-                <button class="info__agregar">Agregar aL carrito</button>
+            <div class="bottom">
+                <div class="btn__group">
+                    <a href="#" class="btn ">Añadir carrito</a>
+                    <a href="#" class="btn view">Vista</a>
+                </div>
             </div>
         </div>
-        <div class="ofertas__card card">
-            <img class="card__img" src="../img/catalogo/61sKuPvcllL._AC_UY395_.jpg" alt="foto articulo">
-            <div class="card__info info">
-                <h3 class="info__titulo">Articulo 5</h3>
-                <p class="info__descripcion">color, talle, sexo</p>
-                <p class="info__precio">$700</p>
-                <button class="info__agregar">Agregar aL carrito</button>
+        <div class="producto">
+            <div class="imge__container">
+                <img src="../img/catalogo/png-transparent-watch-strap-chronograph-armani-watch-brown-watch-accessory-bracelet-removebg-preview.png"
+                    alt="imagen producto">
+            </div>
+            <div class="peoducto__footer">
+                <h1>Relojes Originales</h1>
+                <div class="rating">
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bx-star"></span>
+
+                </div>
+                <div class="price">$102.00</div>
+            </div>
+            <div class="bottom">
+                <div class="btn__group">
+                    <a href="#" class="btn ">Añadir carrito</a>
+                    <a href="#" class="btn view">Vista</a>
+                </div>
             </div>
         </div>
-        <div class="ofertas__card card">
-            <img class="card__img" src="../img/catalogo/McysHandbags202103_00.jpg" alt="foto articulo">
-            <div class="card__info info">
-                <h3 class="info__titulo">Articulo 6</h3>
-                <p class="info__descripcion">color, talle, sexo</p>
-                <p class="info__precio">$300</p>
-                <button class="info__agregar">Agregar aL carrito</button>
+        <div class="producto">
+            <div class="imge__container">
+                <img src="../img/catalogo/png-transparent-watch-strap-chronograph-armani-watch-brown-watch-accessory-bracelet-removebg-preview.png"
+                    alt="imagen producto">
             </div>
-        </div>
-        <var>    <div class="ofertas__card card">
-            <img class="card__img" src="../img/catalogo/61sKuPvcllL._AC_UY395_.jpg" alt="foto articulo">
-            <div class="card__info info">
-                <h3 class="info__titulo">Articulo 7</h3>
-                <p class="info__descripcion">color, talle, sexo</p>
-                <p class="info__precio">$500</p>
-                <button class="info__agregar">Agregar aL carrito</button>
+            <div class="peoducto__footer">
+                <h1>Relojes Originales</h1>
+                <div class="rating">
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bxs-star"></span>
+                    <span class="bx bx-star"></span>
+
+                </div>
+                <div class="price">$102.00</div>
             </div>
-        </div></var>
-    </section>
+            <div class="bottom">
+                <div class="btn__group">
+                    <a href="#" class="btn">Añadir carrito</a>
+                    <a href="#" class="btn view">Vista</a>
+                </div>
+            </div>
+        </div>        
+    </div>
+</section>
     <footer class="footer">
         <section class="footer__info info" >
             <div class="info__nav nav">

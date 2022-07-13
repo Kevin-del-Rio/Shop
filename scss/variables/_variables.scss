@@ -1,14 +1,5 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-li{
-    list-style: none;
-}
-a{
-    text-decoration: none;
-    color: black;
+body{
+    background-color: #fcf7e8;
 }
 
 @mixin flexible($dis, $direction, $corte, $justify, $aling) {
@@ -16,4 +7,68 @@ a{
     flex-flow: $direction $corte;
     justify-content: $justify;
     align-items: $aling;
+}
+
+// main container 
+.container{ 
+    width: 90%;
+    margin-left: 50%;
+    transform: translate(-50%);
+    height: 80vh;    
+    margin-top: 8rem;    
+}
+
+// reseteo basico
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    // box-sizing: inherit;
+}
+html{
+    background-color: #fcf7e8;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Roboto', sans-serif;  
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--black);
+    background-color: var(--white);
+}
+h2,
+h3,
+h4{
+    font-weight: 400;
+}
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+ul,
+li{
+    list-style: none;
+}
+// .container{
+//     max-width:114rem;
+//     margin: 0 auto;
+//     padding:  0 1.6rem;
+// }
+
+@media only screen and (max-width: 1200px){
+    .container{
+        padding: 0 3rem;
+    }
+}
+@media only screen and (max-width: 768px){
+    .container{
+        padding: 0 5rem;
+    }
 }

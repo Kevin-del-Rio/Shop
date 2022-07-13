@@ -1,9 +1,10 @@
 .saludo{
+    position: fixed;
     z-index: 1;
     width: 100%; 
-    background-color: rgb(68, 68, 68);             
-    position: fixed;
     top: 0;
+    background-color: rgb(68, 68, 68);        
+
     &__bienvenida{
         text-align: center;
         color: #f3f3f3;
@@ -11,34 +12,32 @@
     }
 }
 .header{
-    z-index: 1;
-    width: 100%;      
     position: fixed; 
+    z-index: 1;
+    width: 100%;    
     top: 2.3rem;
     @include flexible(flex, row, nowrap, space-around, center);   
     padding: 1rem 0;
-    background-color: #ffffff;
-    border-bottom: #010101 2px solid;  
-
-    &__logo {
+    background-color: #f3f3f3;    
+    border-bottom: #010101 2px solid;   
+    font-weight: 600; 
+    
+    .logo__titulo{
         font-family: 'Dancing Script', cursive;
         font-size: 3rem;
         font-weight: 700;
         cursor: pointer;
-      
+        margin-left: -30%; //correccion de posicion al centro
     }
-    &__productos {
-        @include flexible(flex, row, nowrap, space-around, center);      
-        margin-left: 2rem;  
-        font-size: 1rem;
-        font-weight: 600;
+    
+    &__nav {
+        @include flexible(flex, row, nowrap, space-around, center);        
+        font-size: 1.5rem;        
         text-transform: uppercase;             
     }
     
     &__usuario {
-        @include flexible(flex, row, nowrap, space-around, center);        
-        margin-right: 2rem; 
-        font-size: 1rem;
-        font-weight: 600;        
+        @include flexible(flex, row, nowrap, space-around, center);     
+        font-size: 1.5rem;
     }
 }
