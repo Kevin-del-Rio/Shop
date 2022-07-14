@@ -1,43 +1,56 @@
-.saludo{
+.saludo {
     position: fixed;
     z-index: 1;
-    width: 100%; 
+    width: 100%;
     top: 0;
-    background-color: rgb(68, 68, 68);        
+    background-color: rgb(68, 68, 68);
 
-    &__bienvenida{
+    &__bienvenida {
         text-align: center;
         color: #f3f3f3;
         padding: 0.5rem 0;
     }
 }
-.header{
-    position: fixed; 
+
+.header {
+    position: fixed;
     z-index: 1;
-    width: 100%;    
-    top: 2.3rem;
-    @include flexible(flex, row, nowrap, space-around, center);   
+    width: 100%;
+    top: 2.1rem;
+    @include flexible(flex, row, nowrap, space-around, center);
     padding: 1rem 0;
-    background-color: #f3f3f3;    
-    border-bottom: #010101 2px solid;   
-    font-weight: 600; 
-    
-    .logo__titulo{
-        font-family: 'Dancing Script', cursive;
-        font-size: 3rem;
-        font-weight: 700;
-        cursor: pointer;
-        margin-left: -30%; //correccion de posicion al centro
+    background-color: #f3f3f3;
+    border-bottom: #010101 2px solid;
+    font-weight: 500;
+
+    &__categoria {
+        .categoria {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+
+            
+        }
+
     }
-    
-    &__nav {
-        @include flexible(flex, row, nowrap, space-around, center);        
-        font-size: 1.5rem;        
-        text-transform: uppercase;             
+
+    &__logo {
+        .logo {       
+            font-size: 3rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: -30%; //correccion de posicion al centro}
+        }
     }
-    
-    &__usuario {
-        @include flexible(flex, row, nowrap, space-around, center);     
-        font-size: 1.5rem;
+       
+}
+
+
+@media only screen and (max-width: 768px){
+    .html{
+        font-size: 10px;
+    }
+    .container{
+        padding: 0 5rem;
     }
 }

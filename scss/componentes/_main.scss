@@ -1,5 +1,7 @@
-.main {
+body{
     background-color: #fcf7e8;
+}
+.main {   
     @include flexible(flex, row, nowrap, space-around, center);  
 
     &__texto {  
@@ -9,8 +11,7 @@
 
     &__img {
         width: 30vw;
-        .img {
-            width: 100%;
+        .img {            
             border-radius: 20%;
         }
     }
@@ -42,8 +43,7 @@
         transition: all .3s ease-in-out;
 
         &:hover {         
-            background-color:#f47915;    
-            // font-weight: 600;
+            background-color:#f47915;
             font-size: 2.2rem;
             padding: 1rem .2rem;
             

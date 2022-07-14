@@ -1,47 +1,140 @@
+@charset "UTF-8";
+/*
+    
+  Con este reset vamos a resolver:
+    👉 Unificar el uso de Custom Properties
+    👉 Problemas de box-model más generales
+    👉 Problemas con imagenes, vídeos e iconos svg
+    👉 Problemas con tipografías y etiquetas input en formularios
+    👉 Unificar la tipografía de todas las etiquetas de una web
+
+*/
+/* Aquí definimos las Custom properties */
+:root {
+  --color-primario: #181818;
+  --color-secundario: #f0f0f0;
+  /* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana; }
+
+/* Las adaptamos al modo oscuro */
+/* Opcional */
+/* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primario: black;
+    --color-secundario: white; } }
+
+/* Opcional */
+/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none; } }
+
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline; }
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* opcional */
+  object-fit: cover;
+  /* opcional */
+  object-position: center center; }
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit; }
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline; }
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none; }
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth; }
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit; }
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+/* Configuramos el texto que seleccionamos */
+::selection {
+  background-color: var(--color-primario);
+  color: var(--color-secundario); }
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* opcional */
+  appearance: none; }
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor; }
+
+/* (Probándolo, no usar en producción) En el caso de añadir una  */
+/* p svg{
+    display: inline;
+    width: initial;
+  } */
+/* Configuramos la tipografía para toda la web */
 body {
-  background-color: #fcf7e8; }
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--color-primario);
+  /* opcional */
+  hyphens: auto;
+  /* opcional */
+  font-smooth: always;
+  /* opcional */
+  -webkit-font-smoothing: antialiased;
+  /* opcional */
+  -moz-osx-font-smoothing: grayscale; }
 
 .container {
   width: 90%;
   margin-left: 50%;
   transform: translate(-50%);
-  height: 80vh;
-  margin-top: 8rem; }
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0; }
-
-html {
-  background-color: #fcf7e8;
-  box-sizing: border-box;
-  font-size: 62.5%; }
-
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: var(--black);
-  background-color: var(--white); }
-
-h2,
-h3,
-h4 {
-  font-weight: 400; }
-
-img {
-  max-width: 100%;
-  max-height: 100%; }
-
-a {
-  text-decoration: none;
-  color: black; }
-
-ul,
-li {
-  list-style: none; }
+  min-height: 80vh;
+  margin-top: 7.5rem; }
 
 @media only screen and (max-width: 1200px) {
   .container {
@@ -50,6 +143,41 @@ li {
 @media only screen and (max-width: 768px) {
   .container {
     padding: 0 5rem; } }
+
+.bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0 1rem 0; }
+  .bottom .btn {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+    color: black;
+    font-weight: 500;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out; }
+  .bottom .btn:hover {
+    background-color: #0751a6;
+    color: white;
+    border: 1px solid #0751a6; }
+
+h1 {
+  overflow: hidden;
+  font-size: 1.5rem;
+  font-weight: 500; }
+
+.rating {
+  margin: 0.5rem 0; }
+  .rating span {
+    font-size: 1.5rem;
+    color: #d3b717; }
+
+.price {
+  font-weight: 700;
+  font-size: 1.5rem; }
 
 .saludo {
   position: fixed;
@@ -66,7 +194,7 @@ li {
   position: fixed;
   z-index: 1;
   width: 100%;
-  top: 2.3rem;
+  top: 2.1rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
@@ -74,29 +202,27 @@ li {
   padding: 1rem 0;
   background-color: #f3f3f3;
   border-bottom: #010101 2px solid;
-  font-weight: 600; }
-  .header .logo__titulo {
-    font-family: 'Dancing Script', cursive;
+  font-weight: 500; }
+  .header__categoria .categoria {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-top: 1.5rem; }
+  .header__logo .logo {
     font-size: 3rem;
     font-weight: 700;
     cursor: pointer;
     margin-left: -30%; }
-  .header__nav {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.5rem;
-    text-transform: uppercase; }
-  .header__usuario {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.5rem; }
+
+@media only screen and (max-width: 768px) {
+  .html {
+    font-size: 10px; }
+  .container {
+    padding: 0 5rem; } }
+
+body {
+  background-color: #fcf7e8; }
 
 .main {
-  background-color: #fcf7e8;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
@@ -111,7 +237,6 @@ li {
   .main__img {
     width: 30vw; }
     .main__img .img {
-      width: 100%;
       border-radius: 20%; }
 
 .texto__uno {
@@ -144,7 +269,7 @@ li {
   flex-direction: column;
   flex-wrap: nowrap;
   gap: 2rem;
-  background-color: #efeadc; }
+  background-color: #f3f3f3; }
   .footer__info {
     display: flex;
     justify-content: space-between;
@@ -163,7 +288,6 @@ li {
 
 .pie__logo a {
   color: white;
-  font-family: 'Dancing Script', cursive;
   font-size: 2rem;
   font-weight: 700;
   cursor: pointer; }
@@ -182,66 +306,57 @@ li {
   margin-left: 3px;
   color: white; }
 
-html {
-  background-color: white; }
-
-.rating span {
-  font-size: 2rem;
-  color: #d3b717; }
-
 .productos {
-  padding: 10rem 0; }
+  padding: 10rem 0 3rem 0; }
+  .productos .productos__center {
+    padding: 0 3rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem; }
+    .productos .productos__center .producto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+      border-radius: 10px; }
+      .productos .productos__center .producto .producto__footer {
+        padding: 0.5rem 1rem;
+        width: 100%; }
 
-.productos__center {
-  padding: 0 3rem;
-  margin: 0 auto;
+body {
+  background-color: #fff; }
+
+.detalles {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem; }
+
+.detalle-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 3rem 1.5rem; }
+  grid-template-columns: 1fr 1.2fr; }
 
-.producto {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2); }
+.detalles .img-fluid {
+  max-width: 380px;
+  width: 100%;
+  margin: 5rem auto;
+  box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.2); }
 
-.image__container img {
-  width: 100px; }
+.detalles-content {
+  padding: 2rem; }
 
-.productos__footer {
-  padding: 1rem;
-  width: 100%; }
+.detalles-content h3 {
+  font-weight: 600;
+  text-transform: uppercase; }
 
-.productos__footer h1 {
-  height: 28px;
-  overflow: hidden;
-  font-size: 2rem;
-  font-weight: 500; }
+.detalles-content .description {
+  padding: 1rem; }
 
-.rating {
-  margin: 1rem 0; }
+.detalles-content .description span {
+  line-height: 2rem; }
 
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 0; }
-
-.btn {
-  display: inline-block;
-  border: 1px solid #ccc;
-  padding: 1rem 1.8rem;
-  color: black;
-  font-weight: 500;
-  font-size: 1.7rem;
-  cursor: pointer;
-  transition: all 300ms ease-in-out; }
-
-.btn:hover {
-  background-color: #0751a6;
-  color: white;
-  border: 1px solid #0751a6; }
-
-.price {
-  font-weight: 700;
-  font-size: 1.8rem; }
+@media only screen and (max-width: 840px) {
+  .detalle-grid {
+    grid-template-columns: 1fr; } }

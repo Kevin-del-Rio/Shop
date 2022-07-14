@@ -1,7 +1,3 @@
-body{
-    background-color: #fcf7e8;
-}
-
 @mixin flexible($dis, $direction, $corte, $justify, $aling) {
     display: $dis;
     flex-flow: $direction $corte;
@@ -14,61 +10,67 @@ body{
     width: 90%;
     margin-left: 50%;
     transform: translate(-50%);
-    height: 80vh;    
-    margin-top: 8rem;    
+    min-height: 80vh;    
+    margin-top: 7.5rem;  
+    // background-color: red;  
 }
 
-// reseteo basico
-*,
-*::before,
-*::after{
-    margin: 0;
-    padding: 0;
-    // box-sizing: inherit;
-}
-html{
-    background-color: #fcf7e8;
-    box-sizing: border-box;
-    font-size: 62.5%;
-}
-body{
-    font-family: 'Roboto', sans-serif;  
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--black);
-    background-color: var(--white);
-}
-h2,
-h3,
-h4{
-    font-weight: 400;
-}
-img{
-    max-width: 100%;
-    max-height: 100%;
-}
-a{
-    text-decoration: none;
-    color: black;
-}
-
-ul,
-li{
-    list-style: none;
-}
-// .container{
-//     max-width:114rem;
-//     margin: 0 auto;
-//     padding:  0 1.6rem;
-// }
-
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px){    
     .container{
         padding: 0 3rem;
     }
 }
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px){   
     .container{
         padding: 0 5rem;
     }
 }
+
+// boton
+.bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0 1rem 0;
+
+    .btn {
+        display: inline-block;
+        border: 1px solid #ccc;
+        padding: 0.5rem 1rem;
+        color: black;
+        font-weight: 500;
+        font-size: 1.3rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+    }
+
+    .btn:hover {
+        background-color: #0751a6;
+        color: white;
+        border: 1px solid#0751a6;
+    }
+}
+
+
+// rating
+h1 {                    
+    overflow: hidden;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.rating {
+    margin: 0.5rem 0;
+
+    span {
+        font-size: 1.5rem;
+        color: #d3b717;
+    }
+}
+
+.price {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+

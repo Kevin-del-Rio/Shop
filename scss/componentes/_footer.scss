@@ -1,11 +1,10 @@
-.footer {
-    // color: white;
+.footer {    
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     gap: 2rem;
-    background-color: #efeadc;
+    background-color: #f3f3f3;
 
     &__info {
         display: flex;
@@ -35,8 +34,7 @@
 }
 
 .nav {
-    &__item a {
-        // color: white;
+    &__item a {        
         font-size: 1.2rem;
     }
 }
@@ -44,8 +42,7 @@
 .pie {
     
     &__logo a {
-        color: white;
-        font-family: 'Dancing Script', cursive;
+        color: white; 
         font-size: 2rem;
         font-weight: 700;
         cursor: pointer;

@@ -1,0 +1,42 @@
+body{
+    background-color: #fff;
+}
+.detalles{
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+    
+}
+.detalle-grid{
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;   
+
+}
+.detalles .img-fluid{
+    max-width: 380px;
+    width: 100%;
+    margin: 5rem auto;
+    box-shadow: 0 5px 10px 1px rgba(0, 0, 0, .2);
+}
+.detalles-content{
+    padding: 2rem;
+}
+.detalles-content h3{
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.detalles-content .description{
+    padding: 1rem;
+    
+}
+.detalles-content .description span{
+    line-height: 2rem;
+}
+@media only screen and (max-width:840px){
+    .detalle-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
