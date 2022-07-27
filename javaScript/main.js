@@ -1,28 +1,32 @@
 // clase producto
 class Producto {
-    constructor(idP, nombreP, precioP, stockP) {
+    constructor(idP, nombreP, precioP, imgP) {
         this.id = idP;
         this.nombre = nombreP;
         this.precio = precioP;
-        this.stock = stockP;
+        this.img = imgP;
     }
 }
+// ---------------------------------
+// carrito
+const carrito = [];
+
 // ----------------------------------
 // productos
-let producto1 = new Producto(1, "pelotas", 250, 150);
-let producto2 = new Producto(2, "lapiceras", 100, 120);
-let producto3 = new Producto(3, "tazas", 70, 170);
-let producto4 = new Producto(4, "marcadores", 150, 230);
+let producto1 = new Producto(1, "pelotas", 250, "../img/catalogo/pelota.png");
+let producto2 = new Producto(2, "lapiceras", 100,"../img/catalogo/lapiceras.png");
+let producto3 = new Producto(3, "tazas", 70, "../img/catalogo/tazas.png");
+let producto4 = new Producto(4, "marcadores", 150, "../img/catalogo/marcadores.png");
 // ----------------------------------
 // agrego productos a la tienda
 const tienda = [producto1, producto2, producto3, producto4];
 // ----------------------------------
 // validar numero
-function validarNumber (e){
-    while (e == null || /\D/.test(e) || e == "") {
-        e = parseInt(prompt("Entre un número VÁLIDO: "));
+function validarNumber (n){
+    while (n == null || /\D/.test(n) || n == "") {
+        n = parseInt(prompt("Entre un número VÁLIDO: "));
     };
-    return e;
+    return n;
 }
 // ----------------------------------
 //validar texto
@@ -44,10 +48,11 @@ function agregarProducto() {
 
     let precio = parseInt(prompt("Precio del producto:"));
     precio = validarNumber(precio);
-    let stock = parseInt(prompt(" Ingrese stock: "));     
-    stock = validarNumber(stock);
 
-    let nuevoProducto = new Producto(id, nombre, precio, stock);
+    let img = parseInt(prompt(" Ingrese una imagen: "));  
+   
+
+    let nuevoProducto = new Producto(id, nombre, precio, img);
 
     tienda.push(nuevoProducto);
 }
@@ -57,7 +62,7 @@ function verProductos() {
     let inventario = "";
 
     tienda.forEach((producto) => {
-        inventario += "-    " + producto.nombre.toUpperCase() + "    Precio Unitario:    $" + producto.precio + "    Stock:    " + producto.stock + "\n";
+        inventario += "-    " + producto.nombre.toUpperCase() + "    Precio Unitario:    $" + producto.precio + "    Imagen:    " +producto.img + "\n";
     });
     alert(inventario);
 }
@@ -92,6 +97,42 @@ function operacion() {
         opcion = parseInt(prompt("Ingrese su operacion :\n1)   Agregar un producto\n2)   Ver producto\n3)   Eliminar producto\n0)   Salir"));
     }
 }
+// -----------------------------
+// muestra en el html todos los productos
+tienda.forEach((producto) => {
+    const idButton = `add-cart${producto.id}`     
+    document.getElementById("producto").innerHTML +=`<div class="producto">
+    <div class="image__container">
+        <img class="max" src="${producto.img}"
+            alt="imagen producto">
+    </div>
+    <div class="producto__footer">
+        <h1>${producto.nombre}</h1>
+        <div class="rating">
+            <span class="bx bxs-star"></span>
+            <span class="bx bxs-star"></span>
+            <span class="bx bxs-star"></span>
+            <span class="bx bxs-star"></span>
+            <span class="bx bx-star"></span>
+        </div>
+        <div class="price">$${producto.precio}</div>
+    </div>
+    <div class="bottom">
+        <div class="btn__group">
+            <a href="#" class="btn" id="${idButton}">Añadir carrito</a>
+            <a href="./vistaProducto.html" class="btn view">Vista</a>
+        </div>
+    </div>
+</div>`    
+})
+// ----------------------------------
+// le agregamos a cada boton agregar al carriton su correspondiente id
+tienda.forEach((producto) => {
+    const idButton = `add-cart${producto.id}` 
+    document.getElementById(idButton).addEventListener('click', () => {
+        carrito.push(producto);        
+    })
+});
 // ----------------------------------
 // invocacion del menu
 operacion();

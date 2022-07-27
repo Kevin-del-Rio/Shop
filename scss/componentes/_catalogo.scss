@@ -16,7 +16,10 @@
             background-color: #fff;
             box-shadow: 0 1rem 1rem rgba(0, 0, 0, .2);
             border-radius: 10px;
-
+            .max{
+                max-width: 200px;
+                max-height: 200px;
+            }
             .producto__footer {
                 padding: 0.5rem 1rem;
                 width: 100%;
