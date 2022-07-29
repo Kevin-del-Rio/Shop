@@ -7,27 +7,51 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         gap: 1.5rem;
-        
+
 
         .producto {
-            display: flex;            
+            display: flex;
             flex-direction: column;
-            align-items: center;            
+            align-items: center;
             background-color: #fff;
-            box-shadow: 0 1rem 1rem rgba(0, 0, 0, .2);
+            box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, .2);
             border-radius: 10px;
-            .max{
+
+            .max {
                 max-width: 200px;
                 max-height: 200px;
             }
+
             .producto__footer {
                 padding: 0.5rem 1rem;
                 width: 100%;
-               
+
             }
 
-            
+
         }
     }
 }
-
+.carrito__icon{
+    position: relative;
+    cursor: pointer;
+}
+.carrito__icon i{
+    margin-top: .6rem;
+    font-size: 3.5rem;
+    color: red;
+}
+.carrito__icon span{
+    position: absolute;
+    top: -.4rem;
+    right: -2rem;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    background-color: red;
+    color: white;
+    padding: .2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius:50%;
+}

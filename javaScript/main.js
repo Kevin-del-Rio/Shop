@@ -1,3 +1,7 @@
+const carrito = JSON.parse(localStorage.getItem("carrito")) ?? [];
+// const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+document.getElementById("cart-total").innerHTML = `${carrito.length}`;
+
 // clase producto
 class Producto {
     constructor(idP, nombreP, precioP, imgP) {
@@ -7,14 +11,12 @@ class Producto {
         this.img = imgP;
     }
 }
-// ---------------------------------
-// carrito
-const carrito = [];
+
 
 // ----------------------------------
 // productos
 let producto1 = new Producto(1, "pelotas", 250, "../img/catalogo/pelota.png");
-let producto2 = new Producto(2, "lapiceras", 100,"../img/catalogo/lapiceras.png");
+let producto2 = new Producto(2, "lapiceras", 100, "../img/catalogo/lapiceras.png");
 let producto3 = new Producto(3, "tazas", 70, "../img/catalogo/tazas.png");
 let producto4 = new Producto(4, "marcadores", 150, "../img/catalogo/marcadores.png");
 // ----------------------------------
@@ -22,7 +24,7 @@ let producto4 = new Producto(4, "marcadores", 150, "../img/catalogo/marcadores.p
 const tienda = [producto1, producto2, producto3, producto4];
 // ----------------------------------
 // validar numero
-function validarNumber (n){
+function validarNumber(n) {
     while (n == null || /\D/.test(n) || n == "") {
         n = parseInt(prompt("Entre un número VÁLIDO: "));
     };
@@ -31,8 +33,8 @@ function validarNumber (n){
 // ----------------------------------
 //validar texto
 function validarTexto(t) {
-  let num = /[0-9]+/; 
-    while (num.test(t) || t == "" ) {
+    let num = /[0-9]+/;
+    while (num.test(t) || t == "") {
         t = prompt("Ingrese un nombre VÁLIDO: ");
     }
     return t;
@@ -49,8 +51,8 @@ function agregarProducto() {
     let precio = parseInt(prompt("Precio del producto:"));
     precio = validarNumber(precio);
 
-    let img = parseInt(prompt(" Ingrese una imagen: "));  
-   
+    let img = parseInt(prompt(" Ingrese una imagen: "));
+
 
     let nuevoProducto = new Producto(id, nombre, precio, img);
 
@@ -62,7 +64,7 @@ function verProductos() {
     let inventario = "";
 
     tienda.forEach((producto) => {
-        inventario += "-    " + producto.nombre.toUpperCase() + "    Precio Unitario:    $" + producto.precio + "    Imagen:    " +producto.img + "\n";
+        inventario += "-    " + producto.nombre.toUpperCase() + "    Precio Unitario:    $" + producto.precio + "    Imagen:    " + producto.img + "\n";
     });
     alert(inventario);
 }
@@ -100,8 +102,8 @@ function operacion() {
 // -----------------------------
 // muestra en el html todos los productos
 tienda.forEach((producto) => {
-    const idButton = `add-cart${producto.id}`     
-    document.getElementById("producto").innerHTML +=`<div class="producto">
+    const idButton = `add-cart${producto.id}`
+    document.getElementById("producto").innerHTML += `<div class="producto">
     <div class="image__container">
         <img class="max" src="${producto.img}"
             alt="imagen producto">
@@ -123,19 +125,28 @@ tienda.forEach((producto) => {
             <a href="./vistaProducto.html" class="btn view">Vista</a>
         </div>
     </div>
-</div>`    
+</div>`
 })
 // ----------------------------------
 // le agregamos a cada boton agregar al carriton su correspondiente id
 tienda.forEach((producto) => {
-    const idButton = `add-cart${producto.id}` 
+    const idButton = `add-cart${producto.id}`
     document.getElementById(idButton).addEventListener('click', () => {
-        carrito.push(producto);        
+        carrito.push(producto);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        // const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+        document.getElementById("cart-total").innerHTML = `${carrito.length} `;
     })
 });
 // ----------------------------------
 // invocacion del menu
-operacion();
+// operacion();
+
+
+
+
+
+
 
 
 
