@@ -1,113 +1,65 @@
-const carrito = JSON.parse(localStorage.getItem("carrito")) ?? [];
-// const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+const carritoDOM = document.querySelector(".carrito")
+const overlay = document.querySelector(".carrito__overlay")
+
+const carrito = JSON.parse(localStorage.getItem("carrito")) ;
+const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
 document.getElementById("cart-total").innerHTML = `${carrito.length}`;
 
-// clase producto
-class Producto {
-    constructor(idP, nombreP, precioP, imgP) {
-        this.id = idP;
-        this.nombre = nombreP;
-        this.precio = precioP;
-        this.img = imgP;
-    }
-}
 
-
-// ----------------------------------
 // productos
-let producto1 = new Producto(1, "pelotas", 250, "../img/catalogo/pelota.png");
-let producto2 = new Producto(2, "lapiceras", 100, "../img/catalogo/lapiceras.png");
-let producto3 = new Producto(3, "tazas", 70, "../img/catalogo/tazas.png");
-let producto4 = new Producto(4, "marcadores", 150, "../img/catalogo/marcadores.png");
+const productos = [
+    {
+        id: 1,
+        nombre: "Pelota",
+        img: "../img/catalogo/pelota.png",
+        precio: 900
+    },
+    {
+        id: 2,
+        nombre: "Lapiceras",
+        img: "../img/catalogo/lapiceras.png",
+        precio: 100
+    },
+    {
+        id: 3,
+        nombre: "Tazas",
+        img: "../img/catalogo/tazas.png",
+        precio: 200
+    },
+    {
+        id: 4,
+        nombre: "Marcadores",
+        img: "../img/catalogo/marcadores.png",
+        precio: 150
+    },
+    {
+        id: 5,
+        nombre: "Gorros",
+        img: "../img/catalogo/gorro.jpg",
+        precio: 150
+    },
+    {
+        id: 6,
+        nombre: "Lentes",
+        img: "../img/catalogo/lentes.png",
+        precio: 150
+    },
+    {
+        id: 7,
+        nombre: "Remeras",
+        img: "../img/catalogo/remera.jpg",
+        precio: 150
+    },
+];
 // ----------------------------------
-// agrego productos a la tienda
-const tienda = [producto1, producto2, producto3, producto4];
-// ----------------------------------
-// validar numero
-function validarNumber(n) {
-    while (n == null || /\D/.test(n) || n == "") {
-        n = parseInt(prompt("Entre un número VÁLIDO: "));
-    };
-    return n;
-}
-// ----------------------------------
-//validar texto
-function validarTexto(t) {
-    let num = /[0-9]+/;
-    while (num.test(t) || t == "") {
-        t = prompt("Ingrese un nombre VÁLIDO: ");
-    }
-    return t;
-}
-// ----------------------------------
-// agrego productos a la tienda por prompt
-function agregarProducto() {
-    let id = parseInt(prompt("Ingrese id: "));
-    id = validarNumber(id);
-
-    let nombre = prompt("Nombre del producto: ");
-    nombre = validarTexto(nombre);
-
-    let precio = parseInt(prompt("Precio del producto:"));
-    precio = validarNumber(precio);
-
-    let img = parseInt(prompt(" Ingrese una imagen: "));
-
-
-    let nuevoProducto = new Producto(id, nombre, precio, img);
-
-    tienda.push(nuevoProducto);
-}
-// ----------------------------------
-// funcion para ver todos los productos
-function verProductos() {
-    let inventario = "";
-
-    tienda.forEach((producto) => {
-        inventario += "-    " + producto.nombre.toUpperCase() + "    Precio Unitario:    $" + producto.precio + "    Imagen:    " + producto.img + "\n";
-    });
-    alert(inventario);
-}
-// ----------------------------------
-// funcion para eliminar productos
-function borrarProducto() {
-    let inventario = "";
-    tienda.forEach((producto) => {
-        inventario += "-  " + producto.id + "    " + producto.nombre.toUpperCase() + "\n";
-    });
-    let idc = parseInt(prompt("Elije el ID a elimirar :\n" + inventario));
-
-    const productoAEliminar = tienda.findIndex(prod => prod.id === idc);
-    tienda.splice(productoAEliminar, 1);
-}
-// ----------------------------------
-// menu con opciones
-function operacion() {
-    let opcion = parseInt(prompt("Ingrese su operacion :\n1)   Agregar un producto\n2)   Ver producto\n3)   Eliminar producto\n0)   Salir"));
-    while (opcion !== 0) {
-        switch (opcion) {
-            case 1:
-                agregarProducto();
-                break;
-            case 2:
-                verProductos();
-                break;
-            case 3:
-                borrarProducto();
-                break;
-        }
-        opcion = parseInt(prompt("Ingrese su operacion :\n1)   Agregar un producto\n2)   Ver producto\n3)   Eliminar producto\n0)   Salir"));
-    }
-}
-// -----------------------------
 // muestra en el html todos los productos
-tienda.forEach((producto) => {
+productos.forEach((producto) => {
     const idButton = `add-cart${producto.id}`
-    document.getElementById("producto").innerHTML += `<div class="producto">
-    <div class="image__container">
-        <img class="max" src="${producto.img}"
-            alt="imagen producto">
-    </div>
+    document.getElementById("producto").innerHTML +=
+    `<div class="producto">
+        <div class="image__container">
+            <img class="max" src="${producto.img}"alt="imagen producto">
+        </div>
     <div class="producto__footer">
         <h1>${producto.nombre}</h1>
         <div class="rating">
@@ -129,19 +81,92 @@ tienda.forEach((producto) => {
 })
 // ----------------------------------
 // le agregamos a cada boton agregar al carriton su correspondiente id
-tienda.forEach((producto) => {
+productos.forEach((producto) => {
     const idButton = `add-cart${producto.id}`
     document.getElementById(idButton).addEventListener('click', () => {
         carrito.push(producto);
         localStorage.setItem("carrito", JSON.stringify(carrito));
-        // const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+        const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
         document.getElementById("cart-total").innerHTML = `${carrito.length} `;
+        
+        
+        carrito.forEach((producto) => {
+            document.getElementById("carrito-center").innerHTML +=
+
+           `<div class="carrito__item">
+                <img src=${producto.img} alt=${producto.nombre}>
+                <div>
+                    <h3>${producto.nombre}</h3>
+                    <p class="price">$${producto.precio}</p>
+                </div>
+                <div>
+                    <span class="increase" data-id=${idButton}>
+                        <i class="bx bxs-up-arrow"></i>
+                    </span>
+                    <p class="item__cantidad">1</p>
+                    <span class="decrease" data-id=${idButton}>
+                        <i class="bx bxs-down-arrow"></i>
+                    </span>
+                </div>
+                <div>
+                    <span class="remove__item" data-id=${idButton}>
+                        <i class="bx bx-trash"></i>
+                    </span>
+                </div>
+            </div>`
+        })  
+             
     })
 });
 // ----------------------------------
-// invocacion del menu
-// operacion();
+function openCarrito() {
+    carritoDOM.classList.add("show")
+    overlay.classList.add("show")
 
+
+    carrito  = localStorage.getItem(key);    
+        carrito.forEach((producto) => {
+            document.getElementById("carrito-center").innerHTML +=
+
+           `<div class="carrito__item">
+                <img src=${producto.img} alt=${producto.nombre}>
+                <div>
+                    <h3>${producto.nombre}</h3>
+                    <p class="price">$${producto.precio}</p>
+                </div>
+                <div>
+                    <span class="increase" data-id=${idButton}>
+                        <i class="bx bxs-up-arrow"></i>
+                    </span>
+                    <p class="item__cantidad">1</p>
+                    <span class="decrease" data-id=${idButton}>
+                        <i class="bx bxs-down-arrow"></i>
+                    </span>
+                </div>
+                <div>
+                    <span class="remove__item" data-id=${idButton}>
+                        <i class="bx bx-trash"></i>
+                    </span>
+                </div>
+            </div>`
+        }) 
+}
+function closeCarrito() {
+    carritoDOM.classList.remove("show")
+    overlay.classList.remove("show")
+ 
+}
+
+function removerId(id){
+    carrito = carrito.filter(item => item.id !== id);
+		this.setItemValues(carrito)
+		Storage.saveCart(carrito)
+		let button = this.singleButton(id);
+		if(button){
+			button.disabled = false;
+			button.innerText = "Añadir carrito"
+		}
+}
 
 
 

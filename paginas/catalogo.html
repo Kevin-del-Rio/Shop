@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <!-- fuentes -->
-   
+    <!-- fuentes -->   
     <!-- box icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="https://kit.fontawesome.com/8b41b42900.js" crossorigin="anonymous"></script> 
     <!--css  -->
     <link rel="stylesheet" href="/css/main.css">
-    <!-- js -->
-    
+    <!-- js -->    
     <title>Catálogo | Shop</title>
 </head>
 
@@ -25,7 +23,7 @@
         <div class="header__categoria"><a class="categoria" href="#">Categorias</a></div>       
         <div class="header__logo"><a class="logo" href="../index.html">SHOP</a></div>
         <div class="header__carrito">
-            <div class="carrito__icon">
+            <div class="carrito__icon" onclick="openCarrito()">
                 <i class="bx bx-cart"></i>
                 <span class="item__total" id="cart-total">0</span>
             </div>
@@ -34,34 +32,31 @@
 
 <!-- productos -->
 <section class="productos">
-    <div class="productos__center" id="producto">
-        <!-- <div class="producto">
-            <div class="imge__container">
-                <img src="../img/catalogo/png-transparent-watch-strap-chronograph-armani-watch-brown-watch-accessory-bracelet-removebg-preview.png"
-                    alt="imagen producto">
-            </div>
-            <div class="producto__footer" >
-                <h1 id="hola">Relojes Originales</h1>
-                <div class="rating">
-                    <span class="bx bxs-star"></span>
-                    <span class="bx bxs-star"></span>
-                    <span class="bx bxs-star"></span>
-                    <span class="bx bxs-star"></span>
-                    <span class="bx bx-star"></span>
-
-                </div>
-                <div class="price">$102.00</div>
-            </div>
-            <div class="bottom">
-                <div class="btn__group">
-                    <a href="#" class="btn">Añadir carrito</a>
-                    <a href="#" class="btn view">Vista</a>
-                </div>
-            </div>
-        </div>         -->
+    <div class="productos__center" id="producto">     
     </div>
 </section>
-    <footer class="footer">
+
+  <!--Carrito-->
+
+  <section class="carrito__overlay" id="carrito-overlay">
+    <div class="carrito" id="carrito">
+      <span class="close__carrito" onclick="closeCarrito()" >
+        <i class="bx bx-x"></i>
+      </span>
+      <h1>Su Carrito</h1>
+
+      <div class="carrito__center" id="carrito-center">     
+      </div>
+      <div class="carrito__footer">
+        <h3>Total: $ <span class="carrito__total">0</span></h3>
+        <button class="clear__carrito btn">remover carrito</button>
+      </div>
+    </div>
+  </section>
+
+
+
+    <!-- <footer class="footer">
         <section class="footer__info info" >
             <div class="info__nav nav">
                 <h3>Quick links</h3>
@@ -86,7 +81,7 @@
                 <div class="redes"><i class="fa-brands fa-twitter"></i></div>
             </div>
         </section>
-    </footer>
+    </footer> -->
     <script src="/javaScript/main.js"></script>
 </body>
 
