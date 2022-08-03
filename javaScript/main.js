@@ -1,65 +1,46 @@
+let stockProductos = [
+    {id: 1, nombre: "Pelota", img: "../img/catalogo/pelota.png",precio: 900, cantidad: 1},
+    {id: 2, nombre: "Lapiceras", img: "../img/catalogo/lapiceras.png", precio: 100, cantidad: 1},
+    {id: 3, nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 200, cantidad: 1},
+    {id: 4, nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 150, cantidad: 1},
+    {id: 5, nombre: "Gorros", img: "../img/catalogo/gorro.jpg", precio: 150, cantidad: 1},
+    {id: 6, nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 150, cantidad: 1},
+    {id: 7, nombre: "Remeras",img: "../img/catalogo/remera.jpg", precio: 150, cantidad: 1},
+]
+const contenedorProductos = document.getElementById('producto')
+const carritoCenter = document.querySelector(".carrito__center")
 const carritoDOM = document.querySelector(".carrito")
+const botonVaciar = document.getElementById('vaciar-carrito')
 const overlay = document.querySelector(".carrito__overlay")
-
-const carrito = JSON.parse(localStorage.getItem("carrito")) ;
-const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
-document.getElementById("cart-total").innerHTML = `${carrito.length}`;
+const cantidad = document.getElementById('cantidad')
+const contadorCarrito = document.getElementById('cart-total')
 
 
-// productos
-const productos = [
-    {
-        id: 1,
-        nombre: "Pelota",
-        img: "../img/catalogo/pelota.png",
-        precio: 900
-    },
-    {
-        id: 2,
-        nombre: "Lapiceras",
-        img: "../img/catalogo/lapiceras.png",
-        precio: 100
-    },
-    {
-        id: 3,
-        nombre: "Tazas",
-        img: "../img/catalogo/tazas.png",
-        precio: 200
-    },
-    {
-        id: 4,
-        nombre: "Marcadores",
-        img: "../img/catalogo/marcadores.png",
-        precio: 150
-    },
-    {
-        id: 5,
-        nombre: "Gorros",
-        img: "../img/catalogo/gorro.jpg",
-        precio: 150
-    },
-    {
-        id: 6,
-        nombre: "Lentes",
-        img: "../img/catalogo/lentes.png",
-        precio: 150
-    },
-    {
-        id: 7,
-        nombre: "Remeras",
-        img: "../img/catalogo/remera.jpg",
-        precio: 150
-    },
-];
-// ----------------------------------
-// muestra en el html todos los productos
-productos.forEach((producto) => {
+let carrito = []
+
+//GET STORAGE
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        actualizarCarrito()
+    }
+})
+//VACIAR CARRITO
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito()
+    closeCarrito()
+})
+
+//INYECTAR EL HTML
+stockProductos.forEach((producto) => {
     const idButton = `add-cart${producto.id}`
-    document.getElementById("producto").innerHTML +=
-    `<div class="producto">
-        <div class="image__container">
-            <img class="max" src="${producto.img}"alt="imagen producto">
-        </div>
+    const div = document.createElement('div')
+    div.classList.add('producto')
+    div.innerHTML = 
+   `<div class="image__container">
+        <img class="max" src="${producto.img}"alt="imagen producto">
+    </div>
     <div class="producto__footer">
         <h1>${producto.nombre}</h1>
         <div class="rating">
@@ -73,105 +54,94 @@ productos.forEach((producto) => {
     </div>
     <div class="bottom">
         <div class="btn__group">
-            <a href="#" class="btn" id="${idButton}">Añadir carrito</a>
-            <a href="./vistaProducto.html" class="btn view">Vista</a>
+            <a href="#" class="btn" id="agregar${producto.id}">Añadir carrito</a>
+            <a href="#" class="btn view">Vista</a>
         </div>
-    </div>
-</div>`
-})
-// ----------------------------------
-// le agregamos a cada boton agregar al carriton su correspondiente id
-productos.forEach((producto) => {
-    const idButton = `add-cart${producto.id}`
-    document.getElementById(idButton).addEventListener('click', () => {
-        carrito.push(producto);
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
-        document.getElementById("cart-total").innerHTML = `${carrito.length} `;
-        
-        
-        carrito.forEach((producto) => {
-            document.getElementById("carrito-center").innerHTML +=
+    </div>`
+    contenedorProductos.appendChild(div)  
+    const boton = document.getElementById(`agregar${producto.id}`)  
 
-           `<div class="carrito__item">
-                <img src=${producto.img} alt=${producto.nombre}>
-                <div>
-                    <h3>${producto.nombre}</h3>
-                    <p class="price">$${producto.precio}</p>
-                </div>
-                <div>
-                    <span class="increase" data-id=${idButton}>
-                        <i class="bx bxs-up-arrow"></i>
-                    </span>
-                    <p class="item__cantidad">1</p>
-                    <span class="decrease" data-id=${idButton}>
-                        <i class="bx bxs-down-arrow"></i>
-                    </span>
-                </div>
-                <div>
-                    <span class="remove__item" data-id=${idButton}>
-                        <i class="bx bx-trash"></i>
-                    </span>
-                </div>
-            </div>`
-        })  
-             
+    boton.addEventListener('click', () => {
+        agregarAlCarrito(producto.id)    
     })
-});
-// ----------------------------------
+})
+
+//ARGEGAR AL CARRITO
+const agregarAlCarrito = (prodId) => {
+    const existe = carrito.some(prod => prod.id === prodId) 
+
+    if (existe){
+        const prod = carrito.map (prod => { 
+            if (prod.id === prodId){
+                prod.cantidad++
+                console.log(prod.cantidad)
+            }
+        })
+    } else { 
+        const item = stockProductos.find((prod) => prod.id === prodId)   
+        carrito.push(item)
+    } 
+    actualizarCarrito()
+}
+
+//ELIMINAR ELEMENTO DEL CARRITO
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    actualizarCarrito()  
+}
+//ACTUALIZAR CARRITO
+const actualizarCarrito = () => {    
+    carritoCenter.innerHTML = ""     
+    carrito.forEach((producto) => {
+    const div = document.createElement("div")
+		div.classList.add("carrito__item")
+
+		div.innerHTML = `
+		<img src=${producto.img} alt=${producto.nombre}>
+		<div>
+			<h3>${producto.nombre}</h3>
+			<p class="price">$${producto.precio}</p>
+		</div>
+		<div>
+			<span class="increase" data-id=${producto.id}>
+				<i class="bx bxs-up-arrow"></i>
+			</span>
+			<p class="item__cantidad" <span id ="cantidad">${producto.cantidad}</span></p>
+			<span class="decrease" data-id=${producto.id}>
+				<i class="bx bxs-down-arrow"></i>
+			</span>
+		</div>
+		<div>
+			<span class="remove__item"  onclick="eliminarDelCarrito(${producto.id})"data-id=${producto.id}>
+				<i class="bx bx-trash"></i>
+			</span>
+		</div>
+		`
+		carritoCenter.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    })
+   
+    contadorCarrito.innerText = carrito.length   
+    
+    // precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+    //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
+    //empezando en 0.
+
+}
 function openCarrito() {
     carritoDOM.classList.add("show")
     overlay.classList.add("show")
-
-
-    carrito  = localStorage.getItem(key);    
-        carrito.forEach((producto) => {
-            document.getElementById("carrito-center").innerHTML +=
-
-           `<div class="carrito__item">
-                <img src=${producto.img} alt=${producto.nombre}>
-                <div>
-                    <h3>${producto.nombre}</h3>
-                    <p class="price">$${producto.precio}</p>
-                </div>
-                <div>
-                    <span class="increase" data-id=${idButton}>
-                        <i class="bx bxs-up-arrow"></i>
-                    </span>
-                    <p class="item__cantidad">1</p>
-                    <span class="decrease" data-id=${idButton}>
-                        <i class="bx bxs-down-arrow"></i>
-                    </span>
-                </div>
-                <div>
-                    <span class="remove__item" data-id=${idButton}>
-                        <i class="bx bx-trash"></i>
-                    </span>
-                </div>
-            </div>`
-        }) 
+    console.log(carrito)
+    actualizarCarrito()
 }
 function closeCarrito() {
     carritoDOM.classList.remove("show")
-    overlay.classList.remove("show")
- 
+    overlay.classList.remove("show") 
 }
-
-function removerId(id){
-    carrito = carrito.filter(item => item.id !== id);
-		this.setItemValues(carrito)
-		Storage.saveCart(carrito)
-		let button = this.singleButton(id);
-		if(button){
-			button.disabled = false;
-			button.innerText = "Añadir carrito"
-		}
-}
-
-
-
-
-
 
 
 
