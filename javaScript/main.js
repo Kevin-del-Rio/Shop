@@ -12,6 +12,8 @@ const carritoCenter = document.querySelector(".carrito__center")
 const carritoDOM = document.querySelector(".carrito")
 const botonVaciar = document.getElementById('vaciar-carrito')
 const overlay = document.querySelector(".carrito__overlay")
+
+const precioTotal = document.getElementById('precioTotal')
 const cantidad = document.getElementById('cantidad')
 const contadorCarrito = document.getElementById('cart-total')
 
@@ -127,10 +129,8 @@ const actualizarCarrito = () => {
    
     contadorCarrito.innerText = carrito.length   
     
-    // precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
-    //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
-    //empezando en 0.
-
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+    
 }
 function openCarrito() {
     carritoDOM.classList.add("show")
