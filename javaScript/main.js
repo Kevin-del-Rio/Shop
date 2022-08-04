@@ -3,14 +3,14 @@ let stockProductos = [
     {id: 2, nombre: "Lapiceras", img: "../img/catalogo/lapiceras.png", precio: 100, cantidad: 1},
     {id: 3, nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 200, cantidad: 1},
     {id: 4, nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 150, cantidad: 1},
-    {id: 5, nombre: "Gorros", img: "../img/catalogo/gorro.jpg", precio: 150, cantidad: 1},
+    {id: 5, nombre: "Gorros", img: "../img/catalogo/gorro.png", precio: 150, cantidad: 1},
     {id: 6, nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 150, cantidad: 1},
-    {id: 7, nombre: "Remeras",img: "../img/catalogo/remera.jpg", precio: 150, cantidad: 1},
+    {id: 7, nombre: "Remeras",img: "../img/catalogo/remera.png", precio: 150, cantidad: 1},
     {id: 8, nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 200, cantidad: 1},
     {id: 9, nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 150, cantidad: 1},
-    {id: 10, nombre: "Gorros", img: "../img/catalogo/gorro.jpg", precio: 150, cantidad: 1},
+    {id: 10, nombre: "Gorros", img: "../img/catalogo/gorro.png", precio: 150, cantidad: 1},
     {id: 11, nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 150, cantidad: 1},
-    {id: 12, nombre: "Remeras",img: "../img/catalogo/remera.jpg", precio: 150, cantidad: 1},
+    {id: 12, nombre: "Remeras",img: "../img/catalogo/remera.png", precio: 150, cantidad: 1},
 ]
 const contenedorProductos = document.getElementById('producto')
 const carritoCenter = document.querySelector(".carrito__center")
