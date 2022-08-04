@@ -76,12 +76,13 @@ const agregarAlCarrito = (prodId) => {
         const prod = carrito.map (prod => { 
             if (prod.id === prodId){
                 prod.cantidad++
-                console.log(prod.cantidad)
+                console.log(prod)
             }
         })
     } else { 
         const item = stockProductos.find((prod) => prod.id === prodId)   
         carrito.push(item)
+       
     } 
     actualizarCarrito()
 }
@@ -107,11 +108,11 @@ const actualizarCarrito = () => {
 			<p class="price">$${producto.precio}</p>
 		</div>
 		<div>
-			<span class="increase" data-id=${producto.id}>
+			<span class="increase" onclick="sumarCantidad(${producto.id})" data-id=${producto.id}>
 				<i class="bx bxs-up-arrow"></i>
 			</span>
 			<p class="item__cantidad" <span id ="cantidad">${producto.cantidad}</span></p>
-			<span class="decrease" data-id=${producto.id}>
+			<span class="decrease"onclick="restarCantidad(${producto.id})" data-id=${producto.id}>
 				<i class="bx bxs-down-arrow"></i>
 			</span>
 		</div>
@@ -121,16 +122,11 @@ const actualizarCarrito = () => {
 			</span>
 		</div>
 		`
-		carritoCenter.appendChild(div)
-        
+		carritoCenter.appendChild(div)        
         localStorage.setItem('carrito', JSON.stringify(carrito))
-
-    })
-   
-    contadorCarrito.innerText = carrito.length   
-    
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
-    
+    })   
+    contadorCarrito.innerText = carrito.length       
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)    
 }
 function openCarrito() {
     carritoDOM.classList.add("show")
@@ -145,3 +141,19 @@ function closeCarrito() {
 
 
 
+function sumarCantidad(prod){   
+    const item = carrito.find((p) => p.id === prod)     
+    item.cantidad ++
+    console.log(item, prod)
+    actualizarCarrito()
+}
+function restarCantidad(prod){   
+    const item = carrito.find((p) => p.id === prod) 
+    if(item.cantidad === 1){
+        eliminarDelCarrito(prod)
+    }else{
+        item.cantidad --
+    }    
+    console.log(item)
+    actualizarCarrito()
+}
