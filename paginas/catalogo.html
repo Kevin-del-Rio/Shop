@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <!-- fuentes -->   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fuentes -->
     <!-- box icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <script src="https://kit.fontawesome.com/8b41b42900.js" crossorigin="anonymous"></script> 
+    <script src="https://kit.fontawesome.com/8b41b42900.js" crossorigin="anonymous"></script>
     <!--css  -->
     <link rel="stylesheet" href="/css/main.css">
-    <!-- js -->    
+    <!-- js -->
     <title>Catálogo | Shop</title>
 </head>
 
-<body>    
+<body>
     <div class="saludo">
         <h3 class="saludo__bienvenida">Bienvenidos a nuestro Shop</h3>
     </div>
     <header class="header">
-        <div class="header__categoria"><a class="categoria" href="#">Categorias</a></div>       
+        <div class="header__categoria"><a class="categoria" href="#">Categorias</a></div>
         <div class="header__logo"><a class="logo" href="../index.html">SHOP</a></div>
         <div class="header__carrito">
             <div class="carrito__icon" onclick="openCarrito()">
@@ -30,29 +30,70 @@
         </div>
     </header>
 
-<!-- productos -->
-<section class="productos">
-    <div class="productos__center" id="producto">          
-    </div>
-</section>
+    <!-- productos -->
+    <section class="productos">
+        <div class="productos__center" id="producto">
+            <!-- <div class="producto">
+                <div class="image__container">
+                    <img class="max" src="${producto.img}" alt="imagen producto">
+                </div>
+                <div class="producto__footer">
+                    <h1>${producto.nombre}</h1>
+                    <div class="rating">
+                        <span class="bx bxs-star"></span>
+                        <span class="bx bxs-star"></span>
+                        <span class="bx bxs-star"></span>
+                        <span class="bx bxs-star"></span>
+                        <span class="bx bx-star"></span>
+                    </div>
+                    <div class="price">$${producto.precio}</div>
+                </div>
+                <div class="bottom">
+                    <div class="btn__group">
+                        <a href="#" class="btn" id="agregar${producto.id}">Añadir carrito</a>
+                        <a href="#" class="btn view">Vista</a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
 
-  <!--Carrito-->
-
-  <section class="carrito__overlay" id="carrito-overlay">
-    <div class="carrito" id="carrito">
-      <span class="close__carrito" onclick="closeCarrito()" >
-        <i class="bx bx-x"></i>
-      </span>
-      <h1>Su Carrito</h1>
-      <div class="carrito__center" id="carrito-center">   
-
-      </div>
-      <div class="carrito__footer">
-        <h3>Total: $ <span id="precioTotal">0</span></h3>
-        <button class="clear__carrito btn" id="vaciar-carrito">remover carrito</button>
-      </div>
-    </div>
-  </section>
+    <!--Carrito-->
+    <section class="carrito__overlay" id="carrito-overlay">
+        <div class="carrito" id="carrito">
+            <span class="close__carrito" onclick="closeCarrito()">
+                <i class="bx bx-x"></i>
+            </span>
+            <h1>Su Carrito</h1>
+            <div class="carrito__center" id="carrito-center">
+                <!-- <div class="carrrito__item">
+                    <img src=${producto.img} alt=${producto.nombre}>
+                    <div>
+                        <h3>${producto.nombre}</h3>
+                        <p class="price">$${producto.precio}</p>
+                    </div>
+                    <div>
+                        <span class="increase" onclick="sumarCantidad(${producto.id})" data-id=${producto.id}>
+                            <i class="bx bxs-up-arrow"></i>
+                        </span>
+                        <p class="item__cantidad" <span id="cantidad">${producto.cantidad}</span></p>
+                        <span class="decrease" onclick="restarCantidad(${producto.id})" data-id=${producto.id}>
+                            <i class="bx bxs-down-arrow"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="remove__item" onclick="eliminarDelCarrito(${producto.id})" data-id=${producto.id}>
+                            <i class="bx bx-trash"></i>
+                        </span>
+                    </div>
+                </div> -->
+            </div>
+            <div class="carrito__footer">
+                <h3>Total: $ <span id="precioTotal">0</span></h3>
+                <button class="clear__carrito btn" id="vaciar-carrito">Vaciar Carrito</button>
+            </div>
+        </div>
+    </section>
 
 
 

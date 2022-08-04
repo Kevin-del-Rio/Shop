@@ -6,6 +6,11 @@ let stockProductos = [
     {id: 5, nombre: "Gorros", img: "../img/catalogo/gorro.jpg", precio: 150, cantidad: 1},
     {id: 6, nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 150, cantidad: 1},
     {id: 7, nombre: "Remeras",img: "../img/catalogo/remera.jpg", precio: 150, cantidad: 1},
+    {id: 8, nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 200, cantidad: 1},
+    {id: 9, nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 150, cantidad: 1},
+    {id: 10, nombre: "Gorros", img: "../img/catalogo/gorro.jpg", precio: 150, cantidad: 1},
+    {id: 11, nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 150, cantidad: 1},
+    {id: 12, nombre: "Remeras",img: "../img/catalogo/remera.jpg", precio: 150, cantidad: 1},
 ]
 const contenedorProductos = document.getElementById('producto')
 const carritoCenter = document.querySelector(".carrito__center")
@@ -30,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //VACIAR CARRITO
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
-    actualizarCarrito()
+    localStorage.setItem('carrito', JSON.stringify(carrito))    
     closeCarrito()
 })
 
@@ -67,11 +72,9 @@ stockProductos.forEach((producto) => {
         agregarAlCarrito(producto.id)    
     })
 })
-
 //ARGEGAR AL CARRITO
 const agregarAlCarrito = (prodId) => {
     const existe = carrito.some(prod => prod.id === prodId) 
-
     if (existe){
         const prod = carrito.map (prod => { 
             if (prod.id === prodId){
@@ -86,7 +89,6 @@ const agregarAlCarrito = (prodId) => {
     } 
     actualizarCarrito()
 }
-
 //ELIMINAR ELEMENTO DEL CARRITO
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((prod) => prod.id === prodId)
@@ -128,32 +130,32 @@ const actualizarCarrito = () => {
     contadorCarrito.innerText = carrito.length       
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)    
 }
+// ABRIMOS CARRITO
 function openCarrito() {
     carritoDOM.classList.add("show")
     overlay.classList.add("show")
     console.log(carrito)
     actualizarCarrito()
 }
+// CARRAMOS CARRITO
 function closeCarrito() {
+    actualizarCarrito()
     carritoDOM.classList.remove("show")
-    overlay.classList.remove("show") 
+    overlay.classList.remove("show")     
 }
-
-
-
+// DENTRO DEL CARRITO SUMAMOS PRODUCTOS
 function sumarCantidad(prod){   
     const item = carrito.find((p) => p.id === prod)     
-    item.cantidad ++
-    console.log(item, prod)
+    item.cantidad ++    
     actualizarCarrito()
 }
+// DENTRO DEL CARRITO RESTAMOS PRODUCTOS
 function restarCantidad(prod){   
     const item = carrito.find((p) => p.id === prod) 
-    if(item.cantidad === 1){
-        eliminarDelCarrito(prod)
+    if(!(item.cantidad) === 1){
+       item.cantidad --
     }else{
-        item.cantidad --
+        eliminarDelCarrito(prod)
     }    
-    console.log(item)
     actualizarCarrito()
 }

@@ -219,6 +219,26 @@ h1 {
   .container {
     padding: 0 5rem; } }
 
+.carrito__icon {
+  position: relative;
+  cursor: pointer; }
+
+.carrito__icon i {
+  margin-top: .6rem;
+  font-size: 3.5rem;
+  color: red; }
+
+.carrito__icon span {
+  position: absolute;
+  top: -.4rem;
+  right: -2rem;
+  background-color: red;
+  color: white;
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 50%; }
+
 body {
   background-color: #fcf7e8; }
 
@@ -321,32 +341,16 @@ body {
       background-color: #fff;
       box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
       border-radius: 10px; }
+      .productos .productos__center .producto .image__container {
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        border: 1px blue; }
       .productos .productos__center .producto .max {
-        max-width: 200px;
-        max-height: 200px; }
+        padding: 1rem; }
       .productos .productos__center .producto .producto__footer {
         padding: 0.5rem 1rem;
         width: 100%; }
-
-.carrito__icon {
-  position: relative;
-  cursor: pointer; }
-
-.carrito__icon i {
-  margin-top: .6rem;
-  font-size: 3.5rem;
-  color: red; }
-
-.carrito__icon span {
-  position: absolute;
-  top: -.4rem;
-  right: -2rem;
-  background-color: red;
-  color: white;
-  padding: 0 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: 50%; }
 
 body {
   background-color: #fff; }
