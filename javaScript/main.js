@@ -111,9 +111,11 @@ const agregarAlCarrito = (prodId) => {
 }
 //ELIMINAR ELEMENTO DEL CARRITO
 const eliminarDelCarrito = (prodId) => {
-    const item = carrito.find((prod) => prod.id === prodId)    
-    const indice = carrito.indexOf(item)   
-    carrito.splice(indice, 1)     
+    const item = carrito.find((prod) => prod.id === prodId)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    actualizarCarrito()
+
 }
 //ACTUALIZAR CARRITO
 const actualizarCarrito = () => {
@@ -175,6 +177,7 @@ function restarCantidad(prod) {
     item.cantidad !== 1 ? item.cantidad-- : eliminarDelCarrito(prod)
     actualizarCarrito()
 }
+
 
 function sleep(milliseconds) {
     const date = Date.now();
