@@ -7,7 +7,7 @@
     height: 100%;
     transition: all 300ms ease-in-out;
     background-color: rgba(0, 0, 0, .7);
-     visibility: hidden;
+    visibility: hidden;
     z-index: 2;
 }
 .carrito{
@@ -100,7 +100,7 @@
 .carrito__item .remove__item{
     cursor: pointer;
     color: #e71247;
-    font-size: 4rem;
+    font-size: 4rem;    
 }
 .remove__item:hover {    
     animation: sacude 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) ;    
