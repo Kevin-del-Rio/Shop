@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
 //VACIAR CARRITO
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
-    localStorage.setItem('carrito', JSON.stringify(carrito))    
+    localStorage.setItem('carrito', JSON.stringify(carrito)) 
+    sleep(800)
     closeCarrito()
 })
-
 //INYECTAR EL HTML
 stockProductos.forEach((producto) => {
     const idButton = `add-cart${producto.id}`
@@ -90,11 +90,12 @@ const agregarAlCarrito = (prodId) => {
     actualizarCarrito()
 }
 //ELIMINAR ELEMENTO DEL CARRITO
-const eliminarDelCarrito = (prodId) => {
+const eliminarDelCarrito = (prodId) => {   
     const item = carrito.find((prod) => prod.id === prodId)
-    const indice = carrito.indexOf(item)
+    const indice = carrito.indexOf(item)   
     carrito.splice(indice, 1)
-    actualizarCarrito()  
+    setTimeout(actualizarCarrito(), )         
+          
 }
 //ACTUALIZAR CARRITO
 const actualizarCarrito = () => {    
@@ -125,7 +126,7 @@ const actualizarCarrito = () => {
 		</div>
 		`
 		carritoCenter.appendChild(div)        
-        localStorage.setItem('carrito', JSON.stringify(carrito))
+        localStorage.setItem('carrito', JSON.stringify(carrito))       
     })   
     contadorCarrito.innerText = carrito.length       
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)    
@@ -138,10 +139,11 @@ function openCarrito() {
     actualizarCarrito()
 }
 // CARRAMOS CARRITO
-function closeCarrito() {
-    actualizarCarrito()
+function closeCarrito() {    
+    actualizarCarrito()   
+    overlay.classList.remove("show")
     carritoDOM.classList.remove("show")
-    overlay.classList.remove("show")     
+         
 }
 // DENTRO DEL CARRITO SUMAMOS PRODUCTOS
 function sumarCantidad(prod){   
@@ -152,10 +154,15 @@ function sumarCantidad(prod){
 // DENTRO DEL CARRITO RESTAMOS PRODUCTOS
 function restarCantidad(prod){   
     const item = carrito.find((p) => p.id === prod) 
-    if(!(item.cantidad) === 1){
-       item.cantidad --
-    }else{
-        eliminarDelCarrito(prod)
-    }    
+    item.cantidad !== 1 ? item.cantidad -- : eliminarDelCarrito(prod)   
     actualizarCarrito()
 }
+
+
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }

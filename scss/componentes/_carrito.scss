@@ -25,6 +25,14 @@
      visibility: hidden; 
     transform: all 300ms ease-in-out;
 }
+.carrito h1{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.carrito h3{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 .carrito.show{
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
@@ -36,11 +44,11 @@
 .carrito .close__carrito{
     font-size: 4.5rem;
     cursor: pointer;
-    color: var(--black);
+    color: #222;
     transform: all 300ms ease-in-out;
 }
 .carrito .close__carrito:hover{
-    color: var(--rojo);
+    color: #e71247;
 }
 .carrito__item span{
     font-size: 2rem;
@@ -49,6 +57,18 @@
 .carrito h1{
     text-align: center;
     margin-bottom: 2rem;
+}
+.item__cantidad{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.decrease:active{
+    transform: translatex(2px);
+    transform: translatey(2px);
+}
+.increase:active{
+    transform: translatex(-2px);
+    transform: translatey(-2px);
 }
 .carrito__item{
     display: grid;
@@ -68,19 +88,51 @@
 .carrito__item img{
     width: 9rem;
 }
-.carrito__iem h3{
-    font-weight: 500;
-    margin-bottom: 1.5rem;
+.carrito__item h3{
+    font-weight: 600;
+    font-size: 1.3rem ;
+    margin-bottom: 1rem ;
 }
 .carrito__item .price{
-    color: var(--azul);
+    color: #0751a6;
     font-weight: 700;
 }
 .carrito__item .remove__item{
     cursor: pointer;
-    color: var(--rojo);
+    color: #e71247;
     font-size: 4rem;
 }
+.remove__item:hover {    
+    animation: sacude 0.7s cubic-bezier(0.455, 0.030, 0.515, 0.955) ;    
+}
+@keyframes sacude {
+    0%,
+    100% {
+      transform: rotate(0deg);
+      transform-origin: 50% 50%;
+    }
+    10% {
+      transform: rotate(8deg);
+    }
+    20%,
+    40%,
+    60% {
+      transform: rotate(-10deg);
+    }
+    30%,
+    50%,
+    70% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(-8deg);
+    }
+    90% {
+      transform: rotate(8deg);
+    }
+  }
+  
+  
 .carrito__footer{
     text-align: center;
     margin: 3rem;
@@ -96,6 +148,36 @@
 .carrito__footer .btn:focus{
     outline: none;
 }
+.clear__carrito{
+    border-radius: 20px;
+}
+.clear__carrito:active{
+    animation: estirarLateral 0.9s both;
+}
+@keyframes estirarLateral {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  
 @media only screen and (max-width: 1350px){
     .carrito__item{
         width: 100%;
