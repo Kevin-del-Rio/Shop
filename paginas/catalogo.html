@@ -20,7 +20,16 @@
         <h3 class="saludo__bienvenida">Bienvenidos a nuestro Shop</h3>
     </div>
     <header class="header">
-        <div class="header__categoria"><a class="categoria" href="#">Categorias</a></div>
+        <div class="category">
+            <select id="category" onclick="categoryValue()">
+              <option value="Todos">Todos</option>
+              <option value="Bazar">Bazar</option>            
+              <option value="Accesorio">Accesorios</option>
+              <option value="Deporte">Deporte</option>            
+              <option value="Vestimenta">Vestimenta</option>
+              <option value="Utiles">Utiles</option>            
+            </select>
+          </div>  
         <div class="header__logo"><a class="logo" href="../index.html">SHOP</a></div>
         <div class="header__carrito">
             <div class="carrito__icon" onclick="openCarrito()">

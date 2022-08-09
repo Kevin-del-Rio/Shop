@@ -1,5 +1,5 @@
 let stockProductos = [
-    { id: 1, categoria:"Deporte", nombre: "Pelota", img: "../img/catalogo/pelota.png", precio: 900, cantidad: 1 },
+    // { id: 1, categoria:"Deporte", nombre: "Pelota", img: "../img/catalogo/pelota.png", precio: 900, cantidad: 1 },
     { id: 2, categoria:"Utiles", nombre: "Lapiceras", img: "../img/catalogo/lapiceras.png", precio: 100, cantidad: 1 },
     { id: 3, categoria:"Bazar", nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 142, cantidad: 1 },
     { id: 4, categoria:"Utiles", nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 150, cantidad: 1 },
@@ -124,12 +124,18 @@ function restarCantidad(prod) {
     actualizarCarrito()
 }
 // Filtrado Por Categoria
-// estoy trabajando en el filtrado de los productos. 
-// por el momento funciona ejecutando la funcion desde la consola. 
-// filtradoPorCategoria(categoria deseada) y se muestra en el html/
-function filtradoPorCategoria(cat){
-    const productosCat = stockProductos.filter((producto) => producto.categoria === cat);
-    mostrasProductos(productosCat);       
+let category = "";
+function categoryValue(){
+	category = document.getElementById("category").value
+    const productosCat = stockProductos.filter((producto) => producto.categoria === category); 
+	if(productosCat.length > 0){    
+		mostrasProductos(productosCat)	
+	}else if(category === "Todos"){
+		mostrasProductos(stockProductos)	
+	}else{
+        contenedorProductos.innerHTML = "no hay producos" 
+    } 
+                  
 }
 // Mostrar Productos
 function mostrasProductos(productosCat){   
