@@ -1,14 +1,18 @@
-.saludo {
+.titulo{
     position: fixed;
     z-index: 1;
     width: 100%;
     top: 0;
-    background-color: rgb(68, 68, 68);
+    background-color:  #ffcaa6;
 
-    &__bienvenida {
+    .logo {       
+       
+        font-size: 3rem;
+        font-weight: 700;
+        cursor: pointer;       
+        color: #252525 ;
         text-align: center;
-        color: #f3f3f3;
-        padding: 0.5rem 0;
+        padding: 0.8rem 0;
     }
 }
 
@@ -16,33 +20,12 @@
     position: fixed;
     z-index: 1;
     width: 100%;
-    top: 2.1rem;
+    top: 5rem;
     @include flexible(flex, row, nowrap, space-around, center);
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     background-color: #f3f3f3;
     border-bottom: #010101 2px solid;
-    font-weight: 500;
-
-    &__categoria {
-        .categoria {
-            text-transform: uppercase;
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-
-            
-        }
-
-    }
-
-    &__logo {
-        .logo {       
-            font-size: 3rem;
-            font-weight: 700;
-            cursor: pointer;
-            margin-left: -30%; //correccion de posicion al centro}
-        }
-    }
-       
+    font-weight: 500; 
 }
 
 
@@ -60,17 +43,46 @@
 }
 .carrito__icon i{
     margin-top: .6rem;
-    font-size: 3.5rem;
+    font-size: 2rem;
     color: red;
 }
 .carrito__icon span{
     position: absolute;
-    top: -.4rem;
-    right: -2rem;
-    background-color: red;
-    color: white;
-    padding: 0 0.5rem;
-    font-size: 1.2rem;
+    top: -.2rem;
+    right: -1rem;
+    // background-color: red;
+    color: red;
+    // padding: 0 0.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
     border-radius:50%;
+}
+.category h3{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+.category__select{
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: px;
+    background-color: #f3f3f3;   
+    border: none;
+}
+.category__select option:focus{
+    text-decoration: none;
+    border: none;
+}
+.filtro h3{
+    margin-bottom: 0.3rem;
+    text-align: center;
+    transform: translate(-8px);
+    font-weight: 600;
+}
+.filtro label{
+    margin-right: 1rem;
+}
+.filtro label input{
+    margin-right:  0.5rem;
+   
 }

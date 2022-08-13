@@ -88,16 +88,6 @@ blockquote:before, blockquote:after, q:before, q:after {
   color: var(--color-secundario); }
 
 /* Nivelamos problemas de tipografías y colocación de formularios */
-form, input, textarea, select, button, label {
-  font-family: inherit;
-  font-size: inherit;
-  hyphens: auto;
-  background-color: transparent;
-  color: inherit;
-  display: block;
-  /* opcional */
-  appearance: none; }
-
 /* Reseteamos las tablas */
 table, tr, td {
   border-collapse: collapse;
@@ -179,39 +169,33 @@ h1 {
   font-weight: 700;
   font-size: 1.5rem; }
 
-.saludo {
+.titulo {
   position: fixed;
   z-index: 1;
   width: 100%;
   top: 0;
-  background-color: #444444; }
-  .saludo__bienvenida {
+  background-color: #ffcaa6; }
+  .titulo .logo {
+    font-size: 3rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: #252525;
     text-align: center;
-    color: #f3f3f3;
-    padding: 0.5rem 0; }
+    padding: 0.8rem 0; }
 
 .header {
   position: fixed;
   z-index: 1;
   width: 100%;
-  top: 2.1rem;
+  top: 5rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   background-color: #f3f3f3;
   border-bottom: #010101 2px solid;
   font-weight: 500; }
-  .header__categoria .categoria {
-    text-transform: uppercase;
-    font-size: 1.2rem;
-    margin-top: 1.5rem; }
-  .header__logo .logo {
-    font-size: 3rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-left: -30%; }
 
 @media only screen and (max-width: 768px) {
   .html {
@@ -225,19 +209,45 @@ h1 {
 
 .carrito__icon i {
   margin-top: .6rem;
-  font-size: 3.5rem;
+  font-size: 2rem;
   color: red; }
 
 .carrito__icon span {
   position: absolute;
-  top: -.4rem;
-  right: -2rem;
-  background-color: red;
-  color: white;
-  padding: 0 0.5rem;
-  font-size: 1.2rem;
+  top: -.2rem;
+  right: -1rem;
+  color: red;
+  font-size: 1.5rem;
   font-weight: 700;
   border-radius: 50%; }
+
+.category h3 {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 0.5rem; }
+
+.category__select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: px;
+  background-color: #f3f3f3;
+  border: none; }
+
+.category__select option:focus {
+  text-decoration: none;
+  border: none; }
+
+.filtro h3 {
+  margin-bottom: 0.3rem;
+  text-align: center;
+  transform: translate(-8px);
+  font-weight: 600; }
+
+.filtro label {
+  margin-right: 1rem; }
+
+.filtro label input {
+  margin-right: 0.5rem; }
 
 body {
   background-color: #fcf7e8; }
@@ -532,28 +542,8 @@ body {
   color: #e71247;
   font-size: 4rem; }
 
-.remove__item:hover {
-  animation: sacude 0.7s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-
-@keyframes sacude {
-  0%,
-  100% {
-    transform: rotate(0deg);
-    transform-origin: 50% 50%; }
-  10% {
-    transform: rotate(8deg); }
-  20%,
-  40%,
-  60% {
-    transform: rotate(-10deg); }
-  30%,
-  50%,
-  70% {
-    transform: rotate(10deg); }
-  80% {
-    transform: rotate(-8deg); }
-  90% {
-    transform: rotate(8deg); } }
+.remove__item:active {
+  animation: estirarLateral 0.9s both; }
 
 .carrito__footer {
   text-align: center;

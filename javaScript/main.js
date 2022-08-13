@@ -1,16 +1,16 @@
 let stockProductos = [
     // { id: 1, categoria:"Deporte", nombre: "Pelota", img: "../img/catalogo/pelota.png", precio: 900, cantidad: 1 },
-    { id: 2, categoria:"Utiles", nombre: "Lapiceras", img: "../img/catalogo/lapiceras.png", precio: 100, cantidad: 1 },
-    { id: 3, categoria:"Bazar", nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 142, cantidad: 1 },
-    { id: 4, categoria:"Utiles", nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 150, cantidad: 1 },
-    { id: 5, categoria:"Accesorio", nombre: "Gorros", img: "../img/catalogo/gorro.png", precio: 150, cantidad: 1 },
-    { id: 6, categoria:"Accesorio", nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 150, cantidad: 1 },
-    { id: 7, categoria:"Vestimenta",nombre: "Remeras", img: "../img/catalogo/remera.png", precio: 550, cantidad: 1 },
-    { id: 8, categoria:"Bazar", nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 200, cantidad: 1 },
-    { id: 9, categoria:"Utiles", nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 130, cantidad: 1 },
-    { id: 10, categoria:"Accesorio", nombre: "Gorros", img: "../img/catalogo/gorro.png", precio: 200, cantidad: 1 },
-    { id: 11, categoria:"Accesorio", nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 125, cantidad: 1 },
-    { id: 12, categoria:"Vestimenta", nombre: "Remeras", img: "../img/catalogo/remera.png", precio: 1500, cantidad: 1 },
+    { id: 2, categoria: "Utiles", nombre: "Lapiceras", img: "../img/catalogo/lapiceras.png", precio: 100, cantidad: 1 },
+    { id: 3, categoria: "Bazar", nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 142, cantidad: 1 },
+    { id: 4, categoria: "Utiles", nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 150, cantidad: 1 },
+    { id: 5, categoria: "Accesorio", nombre: "Gorros", img: "../img/catalogo/gorro.png", precio: 150, cantidad: 1 },
+    { id: 6, categoria: "Accesorio", nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 150, cantidad: 1 },
+    { id: 7, categoria: "Vestimenta", nombre: "Remeras", img: "../img/catalogo/remera.png", precio: 550, cantidad: 1 },
+    { id: 8, categoria: "Bazar", nombre: "Tazas", img: "../img/catalogo/tazas.png", precio: 200, cantidad: 1 },
+    { id: 9, categoria: "Utiles", nombre: "Marcadores", img: "../img/catalogo/marcadores.png", precio: 130, cantidad: 1 },
+    { id: 10, categoria: "Accesorio", nombre: "Gorros", img: "../img/catalogo/gorro.png", precio: 200, cantidad: 1 },
+    { id: 11, categoria: "Accesorio", nombre: "Lentes", img: "../img/catalogo/lentes.png", precio: 125, cantidad: 1 },
+    { id: 12, categoria: "Vestimenta", nombre: "Remeras", img: "../img/catalogo/remera.png", precio: 1500, cantidad: 1 },
 ]
 const contenedorProductos = document.getElementById('producto')
 const carritoCenter = document.querySelector(".carrito__center")
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         actualizarCarrito()
     }
 })
+
 //VACIAR CARRITO
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
@@ -57,12 +58,13 @@ const agregarAlCarrito = (prodId) => {
     actualizarCarrito()
 }
 //ELIMINAR ELEMENTO DEL CARRITO
+
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((prod) => prod.id === prodId)
     const indice = carrito.indexOf(item)
+    sleep(800)
     carrito.splice(indice, 1)
     actualizarCarrito()
-
 }
 //ACTUALIZAR CARRITO
 const actualizarCarrito = () => {
@@ -87,7 +89,7 @@ const actualizarCarrito = () => {
 			</span>
 		</div>
 		<div>
-			<span class="remove__item"  onclick="eliminarDelCarrito(${producto.id})"data-id=${producto.id}>
+			<span class="remove__item" onclick="eliminarDelCarrito(${producto.id})"data-id=${producto.id}>
 				<i class="bx bx-trash"></i>
 			</span>
 		</div>
@@ -101,7 +103,7 @@ const actualizarCarrito = () => {
 // ABRIMOS CARRITO
 function openCarrito() {
     carritoDOM.classList.add("show")
-    overlay.classList.add("show")    
+    overlay.classList.add("show")
     actualizarCarrito()
 }
 // CARRAMOS CARRITO
@@ -125,26 +127,35 @@ function restarCantidad(prod) {
 }
 // Filtrado Por Categoria
 let category = "";
-function categoryValue(){
-	category = document.getElementById("category").value
-    const productosCat = stockProductos.filter((producto) => producto.categoria === category); 
-	if(productosCat.length > 0){    
-		mostrasProductos(productosCat)	
-	}else if(category === "Todos"){
-		mostrasProductos(stockProductos)	
-	}else{
-        contenedorProductos.innerHTML = "no hay producos" 
-    } 
-                  
+function categoryValue() {    
+        category = document.getElementById("category").value
+        const productosCat = stockProductos.filter((producto) => producto.categoria === category);
+        if (productosCat.length > 0) {
+            mostrasProductos(productosCat)
+        } else if (category === "Todos") {
+            mostrasProductos(stockProductos)
+        } else {
+            Swal.fire({
+                title: 'Error!',
+                text: 'No hay productos',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
+            document.getElementById("category").value = "Todos"
+            
+        }
+   
+
+
 }
 // Mostrar Productos
-function mostrasProductos(productosCat){   
-document.getElementById("producto").innerHTML = "";
-    productosCat.forEach((prod) => {        
+function mostrasProductos(productosCat) {
+    document.getElementById("producto").innerHTML = "";
+    productosCat.forEach((prod) => {
         const idButton = `add-cart${prod.id}`
         const div = document.createElement('div')
         div.classList.add('card')
-        div.innerHTML =` 
+        div.innerHTML = ` 
         <div class="card-img">
             <div class="max">
                 <img src="${prod.img}"alt="imagen producto">
@@ -165,12 +176,12 @@ document.getElementById("producto").innerHTML = "";
         </div>
     </div>`
 
-    contenedorProductos.appendChild(div)
-    const boton = document.getElementById(`agregar${prod.id}`)
-    boton.addEventListener('click', () => {
+        contenedorProductos.appendChild(div)
+        const boton = document.getElementById(`agregar${prod.id}`)
+        boton.addEventListener('click', () => {
             agregarAlCarrito(prod.id)
         })
-})
+    })
 }
 function sleep(milliseconds) {
     const date = Date.now();
@@ -178,4 +189,12 @@ function sleep(milliseconds) {
     do {
         currentDate = Date.now();
     } while (currentDate - date < milliseconds);
+}
+
+// ----------------------------------------------------------------------------------------------------
+function onlyOne(checkbox) {
+    var checkboxes = document.getElementsByName('check')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
 }

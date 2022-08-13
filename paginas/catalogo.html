@@ -8,29 +8,44 @@
     <!-- fuentes -->
     <!-- box icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <script src="https://kit.fontawesome.com/8b41b42900.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/8b41b42900.js" crossorigin="anonymous"></script> -->
     <!--css  -->
     <link rel="stylesheet" href="/css/main.css">
-    <!-- js -->
+    <!--Sweetalert  -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+
     <title>Catálogo | Shop</title>
 </head>
 
-<body>
-    <div class="saludo">
-        <h3 class="saludo__bienvenida">Bienvenidos a nuestro Shop</h3>
-    </div>
+<body>   
+    <div class="titulo">
+        <div class="titulo__logo"><a class="logo" href="../index.html">SHOP</a></div>
+    </div> 
     <header class="header">
         <div class="category">
-            <select id="category" onclick="categoryValue()">
-              <option value="Todos">Todos</option>
-              <option value="Bazar">Bazar</option>            
-              <option value="Accesorio">Accesorios</option>
-              <option value="Deporte">Deporte</option>            
-              <option value="Vestimenta">Vestimenta</option>
-              <option value="Utiles">Utiles</option>            
+            <h3>Categorias</h3>
+            <select id="category" class="category__select" onclick="categoryValue()">
+                <option value="Todos">Todos</option>
+                <option value="Bazar">Bazar</option>
+                <option value="Accesorio">Accesorios</option>
+                <option value="Deporte">Deporte</option>
+                <option value="Vestimenta">Vestimenta</option>
+                <option value="Utiles">Utiles</option>
             </select>
-          </div>  
-        <div class="header__logo"><a class="logo" href="../index.html">SHOP</a></div>
+        </div>
+        <div class="filtro">
+            <h3>Filtrar por valor</h3>
+            <label><input type="checkbox" name="check" onclick="onlyOne(this)" />Mayor Precio</label>
+            <label><input type="checkbox" name="check" onclick="onlyOne(this)" />Menor Precio</label>               
+        </div>
+        
         <div class="header__carrito">
             <div class="carrito__icon" onclick="openCarrito()">
                 <i class="bx bx-cart"></i>
@@ -38,6 +53,7 @@
             </div>
         </div>
     </header>
+    
 
     <!-- productos -->
     <section class="productos">
@@ -137,6 +153,7 @@
             </div>
         </section>
     </footer> -->
+    <!-- js -->
     <script src="/javaScript/main.js"></script>
 </body>
 
