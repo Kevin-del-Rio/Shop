@@ -1,3 +1,27 @@
+.saludo{
+    width: 100%;
+    height: 3rem;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+    background-color: #252525;
+    color: #f3f3f3;
+}
+.header__inicio{
+   display: flex;
+   justify-content: space-around;
+   padding: 1rem 0;
+   background-color: #ffcaa6;
+}
+.inicio__logo{
+    font-size: 3rem;
+    font-weight: 600;
+}
+.inicio__cart{
+    width: 600px;
+
+
+}
 .titulo{
     position: fixed;
     z-index: 1;

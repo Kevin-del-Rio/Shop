@@ -1,9 +1,10 @@
 body{
-    background-color: #fcf7e8;
+    background-color: red;
 }
 .main {   
     @include flexible(flex, row, nowrap, space-around, center);  
-
+    margin-top: 0;
+    background-color: #fcf7e8;
     &__texto {  
         height: 50%;
         width: 35%;
@@ -39,7 +40,7 @@ body{
         border-bottom: 2px solid #98c5ff;
         border-right: 2px solid #98c5ff;
         border-radius: 10px;
-        background-color: #fff398a3;
+        background-color: #ffcaa6;
         transition: all .3s ease-in-out;
 
         &:hover {         
