@@ -23,7 +23,7 @@ const contadorCarrito = document.getElementById('cart-total')
 const checkboxMenor = document.getElementById('menor')
 const checkboxMayor = document.getElementById('mayor')
 let carrito = []
-
+let productosFiltrados = stockProductos;
 //GET STORAGE
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')) {
@@ -130,42 +130,21 @@ function restarCantidad(prod) {
 let category = "";
 function categoryValue() {
     category = document.getElementById("category").value
-    const productosCat = stockProductos.filter((producto) => producto.categoria === category);
+    productosFiltrados = stockProductos.filter((producto) => producto.categoria === category);
+    checkboxMenor.checked = false; 
+    checkboxMayor.checked = false; 
 
-
-    if (productosCat.length > 0) {
-        // if(checkboxMayor == true){
-        //     console.log("treu")
-        //     productosCat.sort(function (a, b) {
-        //         if (a.precio < b.precio) {
-        //             return 1;
-        //         }
-        //         if (a.precio > b.precio) {
-        //             return -1;
-        //         }
-        //         return 0;
-        //     });
-        // }else if(checkboxMenor == true) {
-        //     productosCat.sort(function (a, b) {
-        //         if (a.precio > b.precio) {
-        //             return 1;
-        //         }
-        //         if (a.precio < b.precio) {
-        //             return -1;
-        //         }
-        //         return 0;
-        //     });
-        // }
-
-        mostrasProductos(productosCat)
+    if (productosFiltrados.length > 0) {
+        mostrasProductos(productosFiltrados)
     } else if (category === "Todos") {
         mostrasProductos(stockProductos)
+        productosFiltrados = stockProductos;
     } else {
         Swal.fire({
-            title: 'Error!',
+            title: 'Lo Sentimos',
             text: 'No hay productos',
-            icon: 'error',
-            confirmButtonText: 'Cool'
+            icon: 'info',
+            confirmButtonText: 'Seguir Comprando'
         })
         document.getElementById("category").value = "Todos"
 
@@ -221,7 +200,7 @@ function sleep(milliseconds) {
 // ----------------------------------------------------------------------------------------------------
 function menor() {
     checkboxMayor.checked = false
-    stockProductos.sort(function (a, b) {
+    productosFiltrados.sort(function (a, b) {
         if (a.precio > b.precio) {
             return 1;
         }
@@ -230,12 +209,12 @@ function menor() {
         }
         return 0;
     });
-    console.log(stockProductos)
-    mostrasProductos(stockProductos)
+    console.log(productosFiltrados)
+    mostrasProductos(productosFiltrados)
 }
 function mayor() {
     checkboxMenor.checked = false
-    stockProductos.sort(function (a, b) {
+    productosFiltrados.sort(function (a, b) {
         if (a.precio < b.precio) {
             return 1;
         }
@@ -244,8 +223,8 @@ function mayor() {
         }
         return 0;
     });
-    console.log(stockProductos)
-    mostrasProductos(stockProductos)
+    console.log(productosFiltrados)
+    mostrasProductos(productosFiltrados)
 }
 
 
