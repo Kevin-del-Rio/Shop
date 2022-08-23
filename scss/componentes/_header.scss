@@ -111,3 +111,18 @@
     margin-right:  0.5rem;
    
 }
+// ----------------------------------
+.input-buscar{
+    padding: 0.5rem 0.2rem;
+}
+.btn-buscar{
+    border: 1px solid #ffcaa6;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: #ffcaa6;
+    animation: all 0.3s ease-in-out;
+}
+ .btn-buscar:hover{
+    transform: translatex(-1px),;
+    transform: translatey(1px);  
+ }

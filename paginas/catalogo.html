@@ -29,7 +29,7 @@
         <div class="titulo__logo"><a class="logo" href="../index.html">SHOP</a></div>
     </div> 
     <header class="header">
-        <div class="category">
+        <div class="category ">
             <h3>Categorias</h3>
             <select id="category" class="category__select" onclick="categoryValue()">
                 <option value="Todos">Todos</option>
@@ -40,10 +40,17 @@
                 <option value="Utiles">Utiles</option>
             </select>
         </div>
-        <div class="filtro">
+    
+        <div class="filtro ">
             <h3>Filtrar por valor</h3>
             <label><input type="checkbox"  id="mayor"  onclick="mayor()" />Mayor Precio</label>
             <label><input type="checkbox"  id="menor"   onclick="menor()" />Menor Precio</label>               
+        </div>
+        <div class="busqueda">
+            <input type="text" class="input-buscar" id="buscar" placeholder="Buscar producto...">
+            <button class="btn-buscar" onclick="buscarProductosEnMELI(buscar.value) ">Buscar</button>
+            
+
         </div>
         
         <div class="header__carrito">
